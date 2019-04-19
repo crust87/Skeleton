@@ -24,6 +24,7 @@ public class RecyclerViewSkeletonScreen implements SkeletonScreen {
         mSkeletonAdapter = new SkeletonAdapter();
         mSkeletonAdapter.setItemCount(builder.mItemCount);
         mSkeletonAdapter.setLayoutReference(builder.mItemResID);
+        mSkeletonAdapter.setBackgroundReference(builder.mBackgroundResId);
         mSkeletonAdapter.setArrayOfLayoutReferences(builder.mItemsResIDArray);
         mSkeletonAdapter.shimmer(builder.mShimmer);
         mSkeletonAdapter.setShimmerColor(builder.mShimmerColor);
@@ -51,6 +52,7 @@ public class RecyclerViewSkeletonScreen implements SkeletonScreen {
         private boolean mShimmer = true;
         private int mItemCount = 10;
         private int mItemResID = R.layout.layout_default_item_skeleton;
+        private int mBackgroundResId = 0;
         private int[] mItemsResIDArray;
         private int mShimmerColor;
         private int mShimmerDuration = 1000;
@@ -118,6 +120,14 @@ public class RecyclerViewSkeletonScreen implements SkeletonScreen {
          */
         public Builder load(@LayoutRes int skeletonLayoutResID) {
             this.mItemResID = skeletonLayoutResID;
+            return this;
+        }
+
+        /**
+         *
+         */
+        public Builder background(@LayoutRes int backgroundResId) {
+            this.mBackgroundResId = backgroundResId;
             return this;
         }
 

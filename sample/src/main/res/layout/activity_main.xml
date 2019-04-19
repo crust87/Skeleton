@@ -24,6 +24,13 @@
         android:text="Grid"
         />
     <Button
+        android:id="@+id/btn_card"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Card"
+        />
+    <Button
         android:id="@+id/btn_view"
         android:layout_marginTop="10dp"
         android:text="View"

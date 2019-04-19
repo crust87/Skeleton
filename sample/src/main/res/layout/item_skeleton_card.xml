@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <View
+        android:id="@+id/cardArea"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintDimensionRatio="3:4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bottomRect"
+        android:layout_width="113dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="38dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <View
+        android:id="@+id/middleRect"
+        android:layout_width="93dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toTopOf="@id/bottomRect"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <View
+        android:id="@+id/topRect"
+        android:layout_width="153dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="7dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toTopOf="@id/middleRect"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <View
+        android:id="@+id/centerDot"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginBottom="12dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <View
+        android:id="@+id/centerRight1"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="12dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/centerDot" />
+
+    <View
+        android:id="@+id/centerRight2"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="12dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/centerRight1" />
+
+    <View
+        android:id="@+id/centerLeft1"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="12dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/centerDot" />
+
+    <View
+        android:id="@+id/centerLeft2"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="12dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/centerLeft1" />
+
+</android.support.constraint.ConstraintLayout>

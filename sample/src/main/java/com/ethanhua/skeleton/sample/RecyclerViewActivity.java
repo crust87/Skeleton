@@ -24,6 +24,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private static final String PARAMS_TYPE = "params_type";
     public static final String TYPE_LINEAR = "type_linear";
     public static final String TYPE_GRID = "type_grid";
+    public static final String TYPE_CARD = "type_card";
     private String mType;
 
     public static void start(Context context, String type) {
@@ -77,6 +78,28 @@ public class RecyclerViewActivity extends AppCompatActivity {
                     skeletonScreen.hide();
                 }
             }, 3000);
+        }
+        if (TYPE_CARD.equals(mType)) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            NewsAdapter adapter = new NewsAdapter();
+            final SkeletonScreen skeletonScreen = Skeleton.bind(recyclerView)
+                    .adapter(adapter)
+                    .shimmer(true)
+                    .angle(20)
+                    .frozen(false)
+                    .duration(2000)
+                    .count(10)
+                    .load(R.layout.item_skeleton_card)
+                    .background(R.layout.layout_backgroud)
+                    .color(R.color.shimmer_color)
+                    .show(); //default count is 10
+//            recyclerView.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    skeletonScreen.hide();
+//                }
+//            }, 3000);
+            return;
         }
     }
 

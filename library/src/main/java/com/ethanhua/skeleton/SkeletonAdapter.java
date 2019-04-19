@@ -5,16 +5,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.ethanhua.skeleton.viewholder.BackgroundedShimmerViewHolder;
+import com.ethanhua.skeleton.viewholder.DefaultViewHolder;
+import com.ethanhua.skeleton.viewholder.BaseViewHolder;
+import com.ethanhua.skeleton.viewholder.ShimmerViewHolder;
+
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 /**
  * Created by ethanhua on 2017/7/29.
  */
 
-public class SkeletonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class SkeletonAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private int mItemCount;
     private int mLayoutReference;
+    private int mBackgroundReference;
     private int[] mLayoutArrayReferences;
     private int mColor;
     private boolean mShimmer;
@@ -22,23 +28,26 @@ public class SkeletonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private int mShimmerAngle;
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         if (doesArrayOfLayoutsExist()) {
             mLayoutReference = viewType;
         }
         if (mShimmer) {
-            return new ShimmerViewHolder(inflater, parent, mLayoutReference);
+            if (mBackgroundReference != 0) {
+                return new BackgroundedShimmerViewHolder(inflater, parent, mLayoutReference, mBackgroundReference);
+            } else {
+                return new ShimmerViewHolder(inflater, parent, mLayoutReference);
+            }
         }
 
-        return new RecyclerView.ViewHolder(inflater.inflate(mLayoutReference, parent, false)) {
-        };
+        return new DefaultViewHolder(inflater.inflate(mLayoutReference, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (mShimmer) {
-            ShimmerLayout layout = (ShimmerLayout) holder.itemView;
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
+        if (mShimmer && holder.getShimmerLayout() != null) {
+            ShimmerLayout layout = holder.getShimmerLayout();
             layout.setShimmerAnimationDuration(mShimmerDuration);
             layout.setShimmerAngle(mShimmerAngle);
             layout.setShimmerColor(mColor);
@@ -66,6 +75,10 @@ public class SkeletonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public void setLayoutReference(int layoutReference) {
         this.mLayoutReference = layoutReference;
+    }
+
+    public void setBackgroundReference(int backgroundReference) {
+        this.mBackgroundReference = backgroundReference;
     }
 
     public void setArrayOfLayoutReferences(int[] layoutReferences) {

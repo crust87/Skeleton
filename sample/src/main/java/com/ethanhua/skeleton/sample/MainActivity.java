@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
                 RecyclerViewActivity.start(MainActivity.this, RecyclerViewActivity.TYPE_GRID);
             }
         });
+        findViewById(R.id.btn_card).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RecyclerViewActivity.start(MainActivity.this, RecyclerViewActivity.TYPE_CARD);
+            }
+        });
         findViewById(R.id.btn_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
